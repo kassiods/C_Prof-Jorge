@@ -1,41 +1,35 @@
-# Configuração do Projeto C no VS Code
+<div align="center">
 
-Guia completo para configurar, compilar e rodar arquivos C com 1 clique no VS Code — tanto no **Windows** quanto no **Linux**.
+# 🛠️ Configuração do Projeto C no VS Code
 
----
+Guia completo para configurar, compilar e rodar arquivos C com **1 clique** no VS Code.
 
-## Índice
+![Windows](https://img.shields.io/badge/Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-- [Configuração do Projeto C no VS Code](#configuração-do-projeto-c-no-vs-code)
-  - [Índice](#índice)
-  - [O que você vai precisar](#o-que-você-vai-precisar)
-  - [Windows](#windows)
-    - [1. Instalações necessárias (Windows)](#1-instalações-necessárias-windows)
-    - [2. Instalar o compilador GCC](#2-instalar-o-compilador-gcc)
-    - [3. Configurar o PATH](#3-configurar-o-path)
-    - [4. Teste rápido (Windows)](#4-teste-rápido-windows)
-  - [Linux](#linux)
-    - [1. Instalações necessárias (Linux)](#1-instalações-necessárias-linux)
-    - [2. Instalar o GCC](#2-instalar-o-gcc)
-    - [3. Instalar o VS Code](#3-instalar-o-vs-code)
-    - [4. Teste rápido (Linux)](#4-teste-rápido-linux)
-  - [Configurar o projeto no VS Code](#configurar-o-projeto-no-vs-code)
-  - [Rodar com 1 clique](#rodar-com-1-clique)
-  - [Erros comuns e soluções](#erros-comuns-e-soluções)
-    - [`pacman` não é reconhecido (Windows)](#pacman-não-é-reconhecido-windows)
-    - [`gcc: command not found` (Linux)](#gcc-command-not-found-linux)
-    - [`stdio.h not found` no VS Code (Windows/Linux)](#stdioh-not-found-no-vs-code-windowslinux)
-    - [Erro ao clicar em Run (qualquer sistema)](#erro-ao-clicar-em-run-qualquer-sistema)
-    - [Permissão negada ao executar (Linux)](#permissão-negada-ao-executar-linux)
-  - [Publicar no GitHub](#publicar-no-github)
-  - [Resumo rápido](#resumo-rápido)
+</div>
 
 ---
 
-## O que você vai precisar
+## 📋 Índice
+
+- [O que você vai precisar](#-o-que-você-vai-precisar)
+- [Windows](#-windows)
+- [Linux](#-linux)
+- [Configurar o projeto no VS Code](#️-configurar-o-projeto-no-vs-code)
+- [Rodar com 1 clique](#️-rodar-com-1-clique)
+- [Erros comuns e soluções](#-erros-comuns-e-soluções)
+- [Publicar no GitHub](#-publicar-no-github)
+- [Resumo rápido](#-resumo-rápido)
+
+---
+
+## 📦 O que você vai precisar
 
 | Ferramenta | Windows | Linux |
-|---|---|---|
+| :--- | :---: | :---: |
 | VS Code | ✅ Instalar manualmente | ✅ Instalar via terminal |
 | GCC (compilador C) | ✅ Via MSYS2 | ✅ Via `apt` / `dnf` / `pacman` |
 | Git | ✅ Instalar manualmente | ✅ Geralmente já instalado |
@@ -43,16 +37,16 @@ Guia completo para configurar, compilar e rodar arquivos C com 1 clique no VS Co
 
 ---
 
-## Windows
+## 🪟 Windows
 
-### 1. Instalações necessárias (Windows)
+### 1. Instalações necessárias
 
-Baixe e instale nesta ordem:
+Baixe e instale **nesta ordem**:
 
-1. **VS Code**: https://code.visualstudio.com/
-2. **Git**: https://git-scm.com/download/win
-3. **MSYS2**: https://www.msys2.org/
-4. **Extensão C/C++** no VS Code: abra o VS Code, vá em Extensions (`Ctrl+Shift+X`) e instale `ms-vscode.cpptools`
+1. **VS Code** → https://code.visualstudio.com/
+2. **Git** → https://git-scm.com/download/win
+3. **MSYS2** → https://www.msys2.org/
+4. **Extensão C/C++** → Abra o VS Code, vá em Extensions (`Ctrl+Shift+X`) e instale `ms-vscode.cpptools`
 
 ### 2. Instalar o compilador GCC
 
@@ -62,35 +56,29 @@ Após instalar o MSYS2, abra o **PowerShell** e rode:
 C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed mingw-w64-ucrt-x86_64-gcc"
 ```
 
-> **Dica:** Se a internet cair durante o download, rode o mesmo comando novamente. O `pacman` retoma de onde parou.
+> 💡 **Dica:** Se a internet cair durante o download, rode o mesmo comando novamente. O `pacman` retoma de onde parou.
 
 ### 3. Configurar o PATH
 
 Adicione `C:\msys64\ucrt64\bin` ao PATH do seu usuário:
 
-1. Pressione `Win` e pesquise por **Variáveis de Ambiente**.
-2. Abra **Editar as variáveis de ambiente do sistema**.
-3. Clique em **Variáveis de Ambiente...**.
-4. Em **Variáveis de usuário**, selecione `Path` e clique em **Editar**.
+1. Pressione `Win` e pesquise por **Variáveis de Ambiente**
+2. Abra **Editar as variáveis de ambiente do sistema**
+3. Clique em **Variáveis de Ambiente...**
+4. Em **Variáveis de usuário**, selecione `Path` e clique em **Editar**
 5. Clique em **Novo** e cole:
    ```
    C:\msys64\ucrt64\bin
    ```
-6. Confirme em **OK** até fechar tudo.
-7. **Feche e abra o VS Code** para que as mudanças tenham efeito.
+6. Confirme em **OK** até fechar tudo
+7. **Feche e reabra o VS Code** para que as mudanças tenham efeito
 
-### 4. Teste rápido (Windows)
+### 4. Teste rápido
 
-No terminal integrado do VS Code:
+No terminal integrado do VS Code, verifique o compilador:
 
 ```powershell
 gcc --version
-```
-
-Saída esperada (versão pode variar):
-
-```
-gcc (GCC) 14.x.x
 ```
 
 Compile e rode um arquivo de teste:
@@ -109,38 +97,41 @@ Hello, World!
 
 ---
 
-## Linux
+## 🐧 Linux
 
-### 1. Instalações necessárias (Linux)
-
-Você vai precisar de:
-
-- **GCC** (compilador C)
-- **VS Code**
-- **Git**
-- **Extensão C/C++** no VS Code
-
-### 2. Instalar o GCC
+### 1. Instalar o GCC e o Git
 
 Escolha o comando de acordo com a sua distribuição:
 
-**Ubuntu / Debian / Linux Mint:**
+<details>
+<summary><b>Ubuntu / Debian / Linux Mint</b></summary>
+
 ```bash
 sudo apt update
 sudo apt install build-essential git -y
 ```
 
-**Fedora / RHEL / CentOS:**
+</details>
+
+<details>
+<summary><b>Fedora / RHEL / CentOS</b></summary>
+
 ```bash
 sudo dnf install gcc git -y
 ```
 
-**Arch Linux / Manjaro:**
+</details>
+
+<details>
+<summary><b>Arch Linux / Manjaro</b></summary>
+
 ```bash
 sudo pacman -S gcc git base-devel
 ```
 
-O pacote `build-essential` (ou equivalente) já inclui o `gcc`, `g++` e o `make`.
+</details>
+
+> ℹ️ O pacote `build-essential` (ou equivalente) já inclui `gcc`, `g++` e `make`.
 
 Verifique a instalação:
 
@@ -148,44 +139,53 @@ Verifique a instalação:
 gcc --version
 ```
 
-### 3. Instalar o VS Code
+### 2. Instalar o VS Code
 
-**Ubuntu / Debian:**
+<details>
+<summary><b>Ubuntu / Debian</b></summary>
+
 ```bash
 sudo apt install wget gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
+  | sudo tee /etc/apt/sources.list.d/vscode.list
 sudo apt update
 sudo apt install code -y
 ```
 
-**Fedora:**
+</details>
+
+<details>
+<summary><b>Fedora</b></summary>
+
 ```bash
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" \
+  > /etc/yum.repos.d/vscode.repo'
 sudo dnf install code -y
 ```
 
-**Arch Linux:**
+</details>
+
+<details>
+<summary><b>Arch Linux (via AUR)</b></summary>
+
 ```bash
-# Via AUR (usando yay ou paru)
 yay -S visual-studio-code-bin
 ```
 
-Alternativamente, baixe o `.deb` ou `.rpm` direto em: https://code.visualstudio.com/
+</details>
 
-Após instalar o VS Code, instale a extensão C/C++:
+Ou baixe o `.deb` / `.rpm` diretamente em: https://code.visualstudio.com/
+
+Instale a extensão C/C++ via terminal:
 
 ```bash
 code --install-extension ms-vscode.cpptools
 ```
 
-Ou abra o VS Code, vá em Extensions (`Ctrl+Shift+X`) e instale `ms-vscode.cpptools`.
-
-### 4. Teste rápido (Linux)
-
-No terminal:
+### 3. Teste rápido
 
 ```bash
 cd aula1
@@ -201,73 +201,86 @@ Hello, World!
 
 ---
 
-## Configurar o projeto no VS Code
+## ⚙️ Configurar o projeto no VS Code
 
-1. Abra a **pasta raiz** do projeto no VS Code (`File > Open Folder`).
-2. Verifique se existe a pasta `.vscode` com os arquivos `tasks.json` e `launch.json`.
-   - Esses arquivos já estão pré-configurados no projeto — você não precisa criar nada.
-3. Abra qualquer arquivo C, por exemplo `aula1/hello.c`.
+1. Abra a **pasta raiz** do projeto no VS Code (`File > Open Folder`)
+2. Verifique se existe a pasta `.vscode` com os arquivos `tasks.json` e `launch.json`
+   > Esses arquivos já estão pré-configurados — você não precisa criar nada.
+3. Abra qualquer arquivo C, por exemplo `aula1/hello.c`
 
 ---
 
-## Rodar com 1 clique
+## ▶️ Rodar com 1 clique
 
-1. Vá em **Run and Debug** (atalho `Ctrl+Shift+D`).
-2. Escolha a configuração **Run active C file**.
-3. Clique no botão verde de play ▶.
+1. Acesse **Run and Debug** com `Ctrl+Shift+D`
+2. Selecione a configuração **Run active C file**
+3. Clique no botão verde **▶ Play**
 
 O VS Code vai automaticamente:
 
-1. Compilar o arquivo C aberto com `gcc`.
-2. Gerar o executável na mesma pasta do arquivo.
-3. Executar no terminal integrado.
+- Compilar o arquivo C aberto com `gcc`
+- Gerar o executável na mesma pasta do arquivo
+- Executar no terminal integrado
 
-> **Atenção:** o arquivo C que você quiser rodar precisa estar **aberto e em foco** no editor antes de clicar em Run.
+> ⚠️ **Atenção:** o arquivo C que deseja rodar precisa estar **aberto e em foco** no editor antes de clicar em Run.
 
 ---
 
-## Erros comuns e soluções
+## 🐛 Erros comuns e soluções
 
-### `pacman` não é reconhecido (Windows)
+<details>
+<summary><b><code>pacman</code> não é reconhecido — Windows</b></summary>
 
-Você rodou o comando no PowerShell comum, sem o caminho completo. Use exatamente:
+Você rodou no PowerShell comum sem o caminho completo. Use exatamente:
 
 ```powershell
 C:\msys64\usr\bin\bash.exe -lc "pacman -S --needed mingw-w64-ucrt-x86_64-gcc"
 ```
 
-### `gcc: command not found` (Linux)
+</details>
 
-O GCC não está instalado ou não está no PATH. Instale com o comando do seu sistema (veja a seção [Instalar o GCC](#2-instalar-o-gcc)) e reabra o terminal.
+<details>
+<summary><b><code>gcc: command not found</code> — Linux</b></summary>
 
-### `stdio.h not found` no VS Code (Windows/Linux)
+O GCC não está instalado ou não está no PATH. Instale com o comando da sua distribuição (veja a seção [Instalar o GCC](#1-instalar-o-gcc-e-o-git)) e reabra o terminal.
 
-1. Confirme que a extensão **C/C++** está instalada.
-2. Abra o Command Palette (`Ctrl+Shift+P`).
-3. Rode `C/C++: Select IntelliSense Configuration...`.
-4. Selecione a configuração do projeto (`c_cpp_properties.json`).
+</details>
 
-### Erro ao clicar em Run (qualquer sistema)
+<details>
+<summary><b><code>stdio.h not found</code> no VS Code — Windows/Linux</b></summary>
 
-1. Feche e reabra o VS Code.
-2. Confirme que o perfil selecionado em **Run and Debug** é `Run active C file`.
-3. Verifique se o terminal mostra a compilação com `gcc` sem erros.
-4. Certifique-se de que o arquivo C está aberto e em foco no editor.
+1. Confirme que a extensão **C/C++** está instalada
+2. Abra o Command Palette com `Ctrl+Shift+P`
+3. Execute `C/C++: Select IntelliSense Configuration...`
+4. Selecione a configuração do projeto (`c_cpp_properties.json`)
 
-### Permissão negada ao executar (Linux)
+</details>
 
-Se aparecer `Permission denied` ao rodar o executável:
+<details>
+<summary><b>Erro ao clicar em Run — qualquer sistema</b></summary>
+
+1. Feche e reabra o VS Code
+2. Confirme que o perfil selecionado em Run and Debug é `Run active C file`
+3. Verifique se o terminal mostra a compilação com `gcc` sem erros
+4. Certifique-se de que o arquivo C está aberto e em foco no editor
+
+</details>
+
+<details>
+<summary><b>Permission denied ao executar — Linux</b></summary>
 
 ```bash
 chmod +x ./hello
 ./hello
 ```
 
+</details>
+
 ---
 
-## Publicar no GitHub
+## 🚀 Publicar no GitHub
 
-1. Crie um repositório **vazio** no GitHub (sem README, sem `.gitignore`).
+1. Crie um repositório **vazio** no GitHub — sem README, sem `.gitignore`
 2. No terminal, dentro da pasta do projeto, execute:
 
 ```bash
@@ -279,19 +292,18 @@ git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
 git push -u origin main
 ```
 
-> Substitua `SEU_USUARIO` e `SEU_REPOSITORIO` pelos seus dados reais.
+> 🔁 Substitua `SEU_USUARIO` e `SEU_REPOSITORIO` pelos seus dados reais.
 
-**Dica:** O arquivo `.gitignore` já está configurado para ignorar binários (`.exe` no Windows, arquivos sem extensão gerados no Linux), então apenas o código-fonte será enviado ao GitHub.
+> 💡 O `.gitignore` já está configurado para ignorar binários (`.exe` no Windows e executáveis sem extensão no Linux), então apenas o código-fonte será enviado.
 
 ---
 
-## Resumo rápido
+## 📊 Resumo rápido
 
 | Etapa | Windows | Linux |
-|---|---|---|
+| :--- | :--- | :--- |
 | Compilador | GCC via MSYS2 | GCC via gerenciador de pacotes |
 | Verificar instalação | `gcc --version` no PowerShell | `gcc --version` no terminal |
 | Compilar manualmente | `gcc arquivo.c -o arquivo.exe` | `gcc arquivo.c -o arquivo` |
 | Executar | `.\arquivo.exe` | `./arquivo` |
-| Rodar no VS Code | `Ctrl+Shift+D` → Run active C file | `Ctrl+Shift+D` → Run active C file |#   C _ P r o f - J o r g e  
- 
+| Rodar no VS Code | `Ctrl+Shift+D` → Run active C file | `Ctrl+Shift+D` → Run active C file |
