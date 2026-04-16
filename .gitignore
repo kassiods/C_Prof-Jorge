@@ -1,0 +1,40 @@
+# Binaries
+*.exe
+*.out
+*.app
+
+# Object and static/shared libraries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Debug symbols / maps
+*.pdb
+*.ilk
+*.map
+
+# Build directories
+build/
+dist/
+
+# CMake / Make / Autotools artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+aclocal.m4
+autom4te.cache/
+m4/
+
+# VS Code workspace state (keep project configs)
+.vscode/*.log
+.vscode/*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
