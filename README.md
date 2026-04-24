@@ -1,4 +1,15 @@
-````md
+# 🖥️ Configurando C no VS Code
+
+> Guia rápido para configurar o ambiente de desenvolvimento C com VS Code no **Windows** e **Linux**.
+
+---
+
+## 📋 Índice
+
+- [🪟 Windows (MSYS2)](#-windows-msys2)
+- [🐧 Linux (Ubuntu/Debian)](#-linux-ubuntudebian)
+- [💻 Configurando o VS Code](#-configurando-o-vs-code)
+- [🚀 Dicas extras](#-dicas-extras)
 
 ---
 
@@ -6,8 +17,10 @@
 
 ### 📥 1. Instalar ferramentas
 
-- VS Code → https://code.visualstudio.com/
-- MSYS2 → https://www.msys2.org/
+| Ferramenta | Link |
+|------------|------|
+| VS Code | https://code.visualstudio.com/ |
+| MSYS2 | https://www.msys2.org/ |
 
 ---
 
@@ -17,9 +30,11 @@ Abra o terminal **MSYS2 UCRT64** e execute:
 
 ```bash
 pacman -Syu
-````
+```
 
-Feche o terminal e abra novamente, depois rode:
+> ⚠️ Feche o terminal após a atualização e abra novamente.
+
+Em seguida, instale o GCC:
 
 ```bash
 pacman -S mingw-w64-ucrt-x86_64-gcc
@@ -29,29 +44,31 @@ pacman -S mingw-w64-ucrt-x86_64-gcc
 
 ### 🔧 3. Configurar o PATH
 
-Adicione ao PATH do Windows:
+Adicione o seguinte caminho ao **PATH do sistema** no Windows:
 
 ```
 C:\msys64\ucrt64\bin
 ```
 
+> 💡 **Como fazer:** Painel de Controle → Sistema → Configurações avançadas do sistema → Variáveis de Ambiente → Editar `Path`
+
 ---
 
 ### 🧪 4. Testar instalação
 
-No terminal (CMD ou PowerShell):
+No **CMD** ou **PowerShell**:
 
 ```bash
 gcc --version
 ```
 
-Se aparecer a versão, está tudo certo ✅
+Se a versão aparecer, está tudo certo! ✅
 
 ---
 
 ## 🐧 Linux (Ubuntu/Debian)
 
-### 📦 Instalar GCC
+### 📦 1. Instalar o GCC
 
 ```bash
 sudo apt update
@@ -60,7 +77,7 @@ sudo apt install build-essential
 
 ---
 
-### 🧪 Testar
+### 🧪 2. Testar instalação
 
 ```bash
 gcc --version
@@ -68,18 +85,20 @@ gcc --version
 
 ---
 
-## 💻 VS Code
+## 💻 Configurando o VS Code
 
 ### 🔌 Extensões recomendadas
 
-* C/C++ (Microsoft)
-* Code Runner (opcional)
+| Extensão | Descrição |
+|----------|-----------|
+| **C/C++** (Microsoft) | Suporte à linguagem, IntelliSense e debug |
+| **Code Runner** *(opcional)* | Execução rápida de código com atalho |
 
 ---
 
 ### ▶️ Compilar e executar
 
-Crie um arquivo `main.c`:
+**1.** Crie um arquivo `main.c`:
 
 ```c
 #include <stdio.h>
@@ -90,21 +109,19 @@ int main() {
 }
 ```
 
-Compile:
+**2.** Compile:
 
 ```bash
 gcc main.c -o main
 ```
 
-Execute:
+**3.** Execute:
 
 ```bash
+# Linux / MSYS2
 ./main
-```
 
-No Windows:
-
-```bash
+# Windows (CMD/PowerShell)
 main.exe
 ```
 
@@ -112,15 +129,18 @@ main.exe
 
 ## 🚀 Dicas extras
 
-* Sempre salve seus arquivos com `.c`
-* Use nomes simples (sem espaço)
-* Organize seus projetos em pastas
+- 💾 Sempre salve seus arquivos com a extensão `.c`
+- 🔤 Use nomes simples, **sem espaços** (ex: `meu_programa.c`)
+- 📁 Organize cada projeto em sua própria pasta
+- 🐛 Use a flag `-Wall` para ativar avisos do compilador:
+  ```bash
+  gcc -Wall main.c -o main
+  ```
 
 ---
 
 <div align="center">
 
-💡 Feito para iniciantes em C que querem começar rápido!
+💡 **Feito para iniciantes em C que querem começar rápido!**
 
 </div>
-```
