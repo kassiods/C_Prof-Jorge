@@ -16,65 +16,63 @@ Compile e execute programas em C em poucos minutos 🚀
 
 ## 🪟 Windows (MSYS2)
 
-### 1. Instalar
+### 📥 1. Instalar ferramentas
+
 - VS Code → https://code.visualstudio.com/
 - MSYS2 → https://www.msys2.org/
 
 ---
 
-### 2. Instalar o GCC
+### ⚙️ 2. Instalar o GCC
 
-Abra o **MSYS2 UCRT64** e execute:
+Abra o terminal **MSYS2 UCRT64** e execute:
 
 ```bash
 pacman -Syu
-pacman -S mingw-w64-ucrt-x86_64-gcc
 ````
+
+Feche o terminal e abra novamente, depois rode:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
 
 ---
 
-### 3. Configurar o PATH
+### 🔧 3. Configurar o PATH
 
-Adicione ao **Path**:
+Adicione ao PATH do Windows:
 
 ```
 C:\msys64\ucrt64\bin
 ```
 
-> Pesquise por **“Variáveis de Ambiente”** → edite o `Path` → adicione o caminho acima
-> Reinicie o VS Code após isso
-
 ---
 
-### 4. Testar instalação
+### 🧪 4. Testar instalação
+
+No terminal (CMD ou PowerShell):
 
 ```bash
 gcc --version
 ```
 
----
-
-### 5. Compilar e executar
-
-```bash
-gcc ex1.c -o ex1
-ex1
-```
+Se aparecer a versão, está tudo certo ✅
 
 ---
 
-## 🐧 Linux
+## 🐧 Linux (Ubuntu/Debian)
 
-### Instalar GCC
+### 📦 Instalar GCC
 
 ```bash
 sudo apt update
-sudo apt install build-essential -y
+sudo apt install build-essential
 ```
 
 ---
 
-### Testar
+### 🧪 Testar
 
 ```bash
 gcc --version
@@ -82,38 +80,59 @@ gcc --version
 
 ---
 
-### Compilar e executar
+## 💻 VS Code
+
+### 🔌 Extensões recomendadas
+
+* C/C++ (Microsoft)
+* Code Runner (opcional)
+
+---
+
+### ▶️ Compilar e executar
+
+Crie um arquivo `main.c`:
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+```
+
+Compile:
 
 ```bash
-gcc ex1.c -o ex1
-./ex1
+gcc main.c -o main
+```
+
+Execute:
+
+```bash
+./main
+```
+
+No Windows:
+
+```bash
+main.exe
 ```
 
 ---
 
-## ⚠️ Erros comuns
+## 🚀 Dicas extras
 
-* **`gcc` não reconhecido** → configure o PATH corretamente
-* **`Illegal byte sequence`** → evite OneDrive (use `C:\C` ou `C:\dev`)
-* **`printf/scanf` erro** → adicione no código:
-
-  ```c
-  #include <stdio.h>
-  ```
-
----
-
-## ✅ Uso rápido
-
-```bash
-gcc arquivo.c -o programa
-./programa
-```
+* Sempre salve seus arquivos com `.c`
+* Use nomes simples (sem espaço)
+* Organize seus projetos em pastas
 
 ---
 
 <div align="center">
 
-✔️ Ambiente pronto para programar em C
+💡 Feito para iniciantes em C que querem começar rápido!
 
 </div>
+```
